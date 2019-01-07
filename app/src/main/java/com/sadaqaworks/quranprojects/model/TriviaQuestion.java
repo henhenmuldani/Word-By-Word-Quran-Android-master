@@ -12,6 +12,7 @@ public class TriviaQuestion extends Activity {
     private String answer;
 
     public TriviaQuestion(String surah_id, String q, String oa, String ob, String oc, String od, String ans) {
+        this.surah_id = surah_id;
         question = q;
         opta = oa;
         optb = ob;

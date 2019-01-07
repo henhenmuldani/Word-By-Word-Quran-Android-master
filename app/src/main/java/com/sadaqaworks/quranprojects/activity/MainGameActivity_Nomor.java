@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sadaqaworks.quranprojects.R;
 import com.sadaqaworks.quranprojects.database.datasource.AyahWordDataSource;
@@ -23,6 +24,7 @@ import com.sadaqaworks.quranprojects.model.AyahWord;
 import com.sadaqaworks.quranprojects.model.TriviaQuestion;
 import com.sadaqaworks.quranprojects.util.settings.Config;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -33,9 +35,9 @@ public class MainGameActivity_Nomor extends AppCompatActivity {
     TextView questionText, triviaQuizText, timeText, resultText, coinText;
     TriviaQuestion currentQuestion;
     List<TriviaQuestion> list;
-    int qid = 0;
     int timeValue = 20;
     int coinValue = 0;
+    int qid =0;
     CountDownTimer countDownTimer;
    // Typeface tb, sb;
     private ArrayList<AyahWord> ayahWordArrayList;
@@ -82,8 +84,8 @@ public class MainGameActivity_Nomor extends AppCompatActivity {
         coinText = (TextView) findViewById(R.id.coinText);
 
         //This will return us a list of data type TriviaQuestion
-        list = new ArrayList<>();
-        // TODO
+        list = allQuestion();
+        //Toast.makeText(this, "" + allQuestion().size(), Toast.LENGTH_SHORT).show();
 
         //Now we gonna shuffle the elements of the list so that we will get questions randomly
         Collections.shuffle(list);
@@ -126,7 +128,7 @@ public class MainGameActivity_Nomor extends AppCompatActivity {
 
     }
 
-    void allQuestion() {
+    ArrayList<TriviaQuestion>  allQuestion() {
         ArrayList<TriviaQuestion> arraylist = new ArrayList<>();
 
         arraylist.add(new TriviaQuestion("114", "Ayat ke 1", "قُلْ", "مَلِكِ", "إِلَٰهِ", "مِن", "قُلْ"));
@@ -135,6 +137,8 @@ public class MainGameActivity_Nomor extends AppCompatActivity {
         arraylist.add(new TriviaQuestion("114", "Ayat ke 4", "مِن", "مَلِكِ", "إِلَٰهِ", "قُلْ", "مِن"));
         arraylist.add(new TriviaQuestion("114", "Ayat ke 5", "ٱلَّذِى", "مَلِكِ", "إِلَٰهِ", "مِن", "ٱلَّذِى"));
         arraylist.add(new TriviaQuestion("114", "Ayat ke 6", "مِنَ", "مَلِكِ", "إِلَٰهِ", "قُلْ", "مِنَ"));
+
+        return arraylist;
     }
 
 
@@ -163,6 +167,7 @@ public class MainGameActivity_Nomor extends AppCompatActivity {
 
     //Onclick listener for first button
     public void buttonA(View view) {
+        Toast.makeText(this, currentQuestion.getAnswer(), Toast.LENGTH_SHORT).show();
         //compare the option with the ans if yes then make button color green
         if (currentQuestion.getOptA().equals(currentQuestion.getAnswer())) {
             buttonA.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.lightGreen));

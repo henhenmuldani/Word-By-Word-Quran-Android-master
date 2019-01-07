@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.NomorAyat"
+    tools:context=".activity.MainGameActivity_Nomor"
     android:orientation="vertical"
     tools:layout_editor_absoluteX="8dp"
     tools:layout_editor_absoluteY="8dp">
@@ -107,6 +107,7 @@
 
         <Button
             android:id="@+id/buttonA"
+            android:onClick="buttonA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -116,6 +117,7 @@
 
         <Button
             android:id="@+id/buttonB"
+            android:onClick="buttonB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -125,6 +127,7 @@
 
 
         <Button
+            android:onClick="buttonC"
             android:id="@+id/buttonC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -134,6 +137,7 @@
             />
 
         <Button
+            android:onClick="buttonD"
             android:id="@+id/buttonD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

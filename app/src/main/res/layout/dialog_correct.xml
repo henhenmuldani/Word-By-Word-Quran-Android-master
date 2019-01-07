@@ -29,7 +29,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="50dp"></View>
-    <info.hoang8f.widget.FButton
+    <Button
         android:id="@+id/dialogNext"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
