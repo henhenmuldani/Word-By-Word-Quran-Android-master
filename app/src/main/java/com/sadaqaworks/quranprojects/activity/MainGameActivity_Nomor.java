@@ -126,6 +126,17 @@ public class MainGameActivity_Nomor extends AppCompatActivity {
 
     }
 
+    void allQuestion() {
+        ArrayList<TriviaQuestion> arraylist = new ArrayList<>();
+
+        arraylist.add(new TriviaQuestion("114", "Ayat ke 1", "قُلْ", "مَلِكِ", "إِلَٰهِ", "مِن", "قُلْ"));
+        arraylist.add(new TriviaQuestion("114", "Ayat ke 2", "مَلِكِ", "قُلْ", "إِلَٰهِ", "مِن", "مَلِكِ"));
+        arraylist.add(new TriviaQuestion("114", "Ayat ke 3", "إِلَٰهِ", "مَلِكِ", "قُلْ", "مِن", "إِلَٰهِ"));
+        arraylist.add(new TriviaQuestion("114", "Ayat ke 4", "مِن", "مَلِكِ", "إِلَٰهِ", "قُلْ", "مِن"));
+        arraylist.add(new TriviaQuestion("114", "Ayat ke 5", "ٱلَّذِى", "مَلِكِ", "إِلَٰهِ", "مِن", "ٱلَّذِى"));
+        arraylist.add(new TriviaQuestion("114", "Ayat ke 6", "مِنَ", "مَلِكِ", "إِلَٰهِ", "قُلْ", "مِنَ"));
+    }
+
 
     public void updateQueAndOptions() {
 
