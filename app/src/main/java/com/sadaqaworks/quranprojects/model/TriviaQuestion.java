@@ -3,6 +3,7 @@ package com.sadaqaworks.quranprojects.model;
 import android.app.Activity;
 
 public class TriviaQuestion extends Activity {
+    private String surah_id;
     private String question;
     private String opta;
     private String optb;
@@ -10,7 +11,7 @@ public class TriviaQuestion extends Activity {
     private String optd;
     private String answer;
 
-    public TriviaQuestion(String q, String oa, String ob, String oc, String od, String ans) {
+    public TriviaQuestion(String surah_id, String q, String oa, String ob, String oc, String od, String ans) {
         question = q;
         opta = oa;
         optb = ob;
@@ -20,12 +21,21 @@ public class TriviaQuestion extends Activity {
     }
 
     public TriviaQuestion() {
+        surah_id = "";
         question = "";
         opta = "";
         optb = "";
         optc = "";
         optd = "";
         answer = "";
+    }
+
+    public String getSurah_id() {
+        return surah_id;
+    }
+
+    public void setSurah_id(String surah_id) {
+        this.surah_id = surah_id;
     }
 
     public String getQuestion() {

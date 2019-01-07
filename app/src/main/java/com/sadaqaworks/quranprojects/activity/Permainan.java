@@ -40,10 +40,9 @@ public class Permainan extends AppCompatActivity {
         startActivity(intent);
     }
     public void NomorAyat(){
-        Intent intent = new Intent(this, NomorAyat.class);
+        Intent intent = new Intent(this, MainGameActivity_Nomor.class);
         intent.putExtra("surah_id",getIntent().getLongExtra("surah_id",0));
         intent.putExtra("ayah_number",getIntent().getLongExtra("ayah_number",0));
-
         startActivity(intent);
     }
 

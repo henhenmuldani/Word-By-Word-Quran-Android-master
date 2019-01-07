@@ -11,6 +11,7 @@ import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -23,10 +24,9 @@ import com.sadaqaworks.quranprojects.model.TriviaQuestion;
 import com.sadaqaworks.quranprojects.util.settings.Config;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
-import info.hoang8f.widget.FButton;
 
 public class MainGameActivity_Nomor extends AppCompatActivity {
     Button buttonA, buttonB, buttonC, buttonD;
@@ -37,7 +37,7 @@ public class MainGameActivity_Nomor extends AppCompatActivity {
     int timeValue = 20;
     int coinValue = 0;
     CountDownTimer countDownTimer;
-    Typeface tb, sb;
+   // Typeface tb, sb;
     private ArrayList<AyahWord> ayahWordArrayList;
 
 
@@ -81,30 +81,9 @@ public class MainGameActivity_Nomor extends AppCompatActivity {
         resultText = (TextView) findViewById(R.id.resultText);
         coinText = (TextView) findViewById(R.id.coinText);
 
-        //Setting typefaces for textview and buttons - this will give stylish fonts on textview and button etc
-        tb = Typeface.createFromAsset(getAssets(), "fonts/TitilliumWeb-Bold.ttf");
-        sb = Typeface.createFromAsset(getAssets(), "fonts/shablagooital.ttf");
-        triviaQuizText.setTypeface(sb);
-        questionText.setTypeface(tb);
-        buttonA.setTypeface(tb);
-        buttonB.setTypeface(tb);
-        buttonC.setTypeface(tb);
-        buttonD.setTypeface(tb);
-        timeText.setTypeface(tb);
-        resultText.setTypeface(sb);
-        coinText.setTypeface(tb);
-
-
         //This will return us a list of data type TriviaQuestion
         list = new ArrayList<>();
-        for(int i=1;i<=ayahNumber;i++){
-            list.add(new TriviaQuestion("Ayat ke " + i,
-                    ayahWordArrayList.get(i).getWord().get(0),
-                    ayahWordArrayList.get(i).getWord().get(1),
-                    ayahWordArrayList.get(i).getWord().get(2),
-                    ayahWordArrayList.get(i).getWord().get(3),
-                    ayahWordArrayList.get(i).getWord().get(4)));
-        }
+        // TODO
 
         //Now we gonna shuffle the elements of the list so that we will get questions randomly
         Collections.shuffle(list);
@@ -126,7 +105,7 @@ public class MainGameActivity_Nomor extends AppCompatActivity {
                 if (timeValue == -1) {
 
                     //Since user is out of time setText as time up
-                    resultText.setText(getString(R.string.timeup));
+                    resultText.setText("Time Up");
 
                     //Since user is out of time he won't be able to click any buttons
                     //therefore we will disable all four options buttons using this method
@@ -175,7 +154,7 @@ public class MainGameActivity_Nomor extends AppCompatActivity {
     public void buttonA(View view) {
         //compare the option with the ans if yes then make button color green
         if (currentQuestion.getOptA().equals(currentQuestion.getAnswer())) {
-            buttonA.setButtonColor(ContextCompat.getColor(getApplicationContext(),R.color.lightGreen));
+            buttonA.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.lightGreen));
             //Check if user has not exceeds the que limit
             if (qid < list.size() - 1) {
 
@@ -204,7 +183,7 @@ public class MainGameActivity_Nomor extends AppCompatActivity {
     //Onclick listener for sec button
     public void buttonB(View view) {
         if (currentQuestion.getOptB().equals(currentQuestion.getAnswer())) {
-            buttonB.setButtonColor(ContextCompat.getColor(getApplicationContext(),R.color.lightGreen));
+            buttonB.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.lightGreen));
             if (qid < list.size() - 1) {
                 disableButton();
                 correctDialog();
@@ -219,7 +198,7 @@ public class MainGameActivity_Nomor extends AppCompatActivity {
     //Onclick listener for third button
     public void buttonC(View view) {
         if (currentQuestion.getOptC().equals(currentQuestion.getAnswer())) {
-            buttonC.setButtonColor(ContextCompat.getColor(getApplicationContext(),R.color.lightGreen));
+            buttonC.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.lightGreen));
             if (qid < list.size() - 1) {
                 disableButton();
                 correctDialog();
@@ -235,7 +214,7 @@ public class MainGameActivity_Nomor extends AppCompatActivity {
     //Onclick listener for fourth button
     public void buttonD(View view) {
         if (currentQuestion.getOptD().equals(currentQuestion.getAnswer())) {
-            buttonD.setButtonColor(ContextCompat.getColor(getApplicationContext(),R.color.lightGreen));
+            buttonD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.lightGreen));
             if (qid < list.size() - 1) {
                 disableButton();
                 correctDialog();
@@ -295,14 +274,14 @@ public class MainGameActivity_Nomor extends AppCompatActivity {
     //On BackPressed
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, HomeScreen.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }
 
     //This dialog is show to the user after he ans correct
     public void correctDialog() {
-        final Dialog dialogCorrect = new Dialog(MainGameActivity.this);
+        final Dialog dialogCorrect = new Dialog(MainGameActivity_Nomor.this);
         dialogCorrect.requestWindowFeature(Window.FEATURE_NO_TITLE);
         if (dialogCorrect.getWindow() != null) {
             ColorDrawable colorDrawable = new ColorDrawable(Color.TRANSPARENT);
@@ -317,11 +296,11 @@ public class MainGameActivity_Nomor extends AppCompatActivity {
 
 
         TextView correctText = (TextView) dialogCorrect.findViewById(R.id.correctText);
-        FButton buttonNext = (FButton) dialogCorrect.findViewById(R.id.dialogNext);
+        Button buttonNext = (Button) dialogCorrect.findViewById(R.id.dialogNext);
 
         //Setting type faces
-        correctText.setTypeface(sb);
-        buttonNext.setTypeface(sb);
+//        correctText.setTypeface(sb);
+//        buttonNext.setTypeface(sb);
 
         //OnCLick listener to go next que
         buttonNext.setOnClickListener(new View.OnClickListener() {
@@ -346,10 +325,10 @@ public class MainGameActivity_Nomor extends AppCompatActivity {
 
     //This method will make button color white again since our one button color was turned green
     public void resetColor() {
-        buttonA.setButtonColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
-        buttonB.setButtonColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
-        buttonC.setButtonColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
-        buttonD.setButtonColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
+        buttonA.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
+        buttonB.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
+        buttonC.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
+        buttonD.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
     }
 
     //This method will disable all the option button

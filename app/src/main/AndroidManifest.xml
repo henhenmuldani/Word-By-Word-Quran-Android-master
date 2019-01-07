@@ -51,6 +51,10 @@
         <activity android:name=".activity.Permainan" />
         <activity android:name=".activity.KataAwal" />
         <activity android:name=".activity.NomorAyat"></activity>
+        <activity android:name=".activity.PlayAgain"></activity>
+        <activity android:name=".activity.GameWon"></activity>
+        <activity android:name=".activity.Time_Up"></activity>
+        <activity android:name=".activity.MainGameActivity_Nomor"></activity>
     </application>
 
 </manifest>
